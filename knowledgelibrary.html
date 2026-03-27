@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+    <title>Knowledge Library</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Knowledge Library - Curiosity AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .organized-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .card-pop {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        .card-pop:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -4px rgba(127, 19, 236, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 md:px-10 py-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-xl bg-primary text-white">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Curiosity AI</h2>
+<span class="text-xs font-medium text-primary uppercase tracking-widest">Knowledge Library</span>
+</div>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<div class="hidden md:flex items-center gap-1 bg-primary/5 dark:bg-primary/10 p-1 rounded-xl">
+<button class="px-5 py-2 rounded-xl bg-primary/10 text-primary text-sm font-bold">All</button>
+<button class="px-5 py-2 rounded-xl text-sm font-medium text-slate-500 hover:bg-slate-50 transition-all">Shared</button>
+<button class="px-5 py-2 rounded-xl text-sm font-medium text-slate-500 hover:bg-slate-50 transition-all">Drafts</button>
+</div>
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-primary/10 hover:border-primary/30 shadow-sm transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/20 hover:scale-105 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="border-l border-primary/10 pl-4 ml-2">
+<div class="bg-primary/20 rounded-full size-10 border-2 border-primary overflow-hidden" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDO7jO5wjx3OpvpHDQD4WLLLE016-7rkmztIVIVdpP_Bq-ZkcY36KU8PQ4zrg6oPacWw7LRPpqfJYsR4BHzpov_I82qgDOGPjRgfzsJFu_dYC7eJPcGr_rJj-2CX-Od6boKFmBHofzY9sjLeGj1Bpo4b-9Iao79CCyUxFVwMMki4QeG8rUzqsscIcDv_AcnlvZvD7wLdnMpZT0kd1WwICcdPNKxlOnhfUh_oykFuFXe2ndk-Csb8s0K8_dlWiwPCaHhfbBpS2LRcFI");'></div>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto w-full px-6 py-8">
+<!-- Premium Search & Filter Bar -->
+<div class="flex flex-col gap-6 mb-10">
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-16 pl-14 pr-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-primary/50 rounded-2xl shadow-sm focus:ring-4 focus:ring-primary/5 transition-all outline-none text-lg font-medium placeholder:text-slate-400" placeholder="Search your curious discoveries..." type="text"/>
+<div class="absolute inset-y-2 right-2 flex items-center gap-2">
+<kbd class="hidden md:flex items-center gap-1 px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-400 uppercase">
+<span class="material-symbols-outlined text-[12px]">keyboard_command_key</span> K
+                        </kbd>
+<button class="flex items-center gap-2 bg-slate-900 dark:bg-primary text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg transition-all hover:scale-105">
+<span class="material-symbols-outlined text-sm">tune</span>
+                            Filters
+                        </button>
+</div>
+</div>
+<!-- Category Tags -->
+<div class="flex flex-wrap gap-2">
+<button class="px-6 py-2.5 rounded-xl bg-primary text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-primary/20 transition-all hover:scale-105">
+<span class="material-symbols-outlined text-sm">explore</span> All Topics
+</button>
+<button class="px-6 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-sm hover:border-primary/40 hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-blue-500">science</span> Science
+</button>
+<button class="px-6 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-sm hover:border-primary/40 hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-amber-500">auto_stories</span> History
+</button>
+<button class="px-6 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-sm hover:border-primary/40 hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-indigo-500">rocket</span> Space
+</button>
+<button class="px-6 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-sm hover:border-primary/40 hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-emerald-500">self_improvement</span> Philosophy
+</button>
+<button class="px-6 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-sm hover:border-primary/40 hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-rose-500">brush</span> Arts
+</button>
+</div>
+</div>
+<!-- Masonry Grid Content -->
+<div class="organized-grid">
+<!-- Card 1 -->
+<div class="card-pop group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+<div class="h-40 w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Abstract deep space and glowing stars" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdb5iC707eEbIfOKxE2U9LxOVsgZENBS9KTZh1Mbfv1pvPx1lwnoXEnq3jJ8PK7kGUriTZ5x1sKA_9cmDSYzKV3L6muRoW9bPpTOLO8AIOUrw9Uu1nJ7qriWg7u7Gy34NNNYa33urSPVWR65vVAWNgCAvCztrYcwu67O39QIBmzqsgRfSRmiIjp92_-DDbal4X8ysV1XHBbEUhHigA4oufpz1wCD7hzik69gD2jPgdUuX-LGUlvt5QCQcC-zZvs2CspILkb4i4PtQ");'></div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-black bg-indigo-100 text-indigo-600 uppercase tracking-tighter">Space</span>
+<span class="text-slate-400 text-[10px] font-medium uppercase tracking-widest">2h ago</span>
+</div>
+<h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 leading-tight">The James Webb Telescope's Deepest Secret</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-3 mb-4">A new discovery suggests galaxies formed much earlier than we ever anticipated...</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200" data-alt="Avatar snippet small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJGDsp6VfV8T78QhXF7pDJxzv3P3KZHEnKSSs-mbNptAWzo499ud9H_9T2Z4d_E6-UwuZHi8OwcvKKs4dDsFGCQNOp1HZW8TEXtrQzbt73jh77pKvyqPbWo_U0QJKv_ct-mosxWsc7X__Iffvl8XJP2at-QjK8TwM-VcUyXzSU4AJYQHG8J78_GBcYuFVu-EmR7OYaubmkVO9bKHqL7-BjYS5_ofs4ldJqy0AJDjIAnxZTCeda37ffV39bt3-YRWzs82HDhmMXuCU");'></div>
+</div>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="card-pop group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-100 text-emerald-600 uppercase tracking-tighter">Nature</span>
+<span class="text-slate-400 text-[10px] font-medium uppercase tracking-widest">Yesterday</span>
+</div>
+<h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 leading-tight">Wood Wide Web: How Trees Talk</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2">Underground fungal networks connect entire forests in a complex communication system.</p>
+<div class="mt-4 flex flex-wrap gap-1">
+<span class="text-[10px] text-slate-400 font-bold px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-700">#fungi</span>
+<span class="text-[10px] text-slate-400 font-bold px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-700">#ecosystems</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="card-pop group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+<div class="h-48 w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Abstract golden patterns of ancient scrolls" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsI7i_vuU0LacD2_pCGdsJUWofuboOWNL6fNJo7L8db_qaTxgmXWPxtpkmsL38ArBDaWKgJJfGjwy_FUsz76j0fgpzPChDpxWhE3fa0AhCYLC1EDI2fxDb_G-mjh35n8P2sXWz3PKPcRI3qu08s3iCWrJ-JGZUFr8gfVYzGzl1EqEHE7onWPeKiiZUsedANFm3uK5T4q-DuAjcwvIkFsBYJxBRlUcm91PSCsaWD5GSgdAnVqPaIZfhiMlyIAaaAbaC6XYTVUtABZE");'></div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-black bg-amber-100 text-amber-600 uppercase tracking-tighter">History</span>
+<span class="text-slate-400 text-[10px] font-medium uppercase tracking-widest">4 days ago</span>
+</div>
+<h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 leading-tight">The Library of Alexandria: Recovered Fragments?</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-4 mb-4">New archaeological techniques in digital reconstruction are revealing lost texts from the Mediterranean basin that might belong to the legendary collection...</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex items-center gap-2 text-primary font-bold text-xs">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                1.2k reads
+                            </div>
+<span class="material-symbols-outlined text-slate-300">more_horiz</span>
+</div>
+</div>
+</div>
+<!-- Empty State (Simulated placeholder for masonry feel) -->
+<div class="card-pop group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+<div class="size-24 mb-4 flex items-center justify-center">
+<div class="relative">
+<div class="size-20 bg-primary/20 rounded-full animate-pulse"></div>
+<span class="material-symbols-outlined text-primary text-5xl absolute inset-0 flex items-center justify-center">help</span>
+</div>
+</div>
+<h4 class="text-primary font-bold mb-1 leading-tight">Ready for more?</h4>
+<p class="text-xs text-primary/60 font-medium">Keep exploring to fill your library with wonders!</p>
+</div>
+<!-- Card 4 -->
+<div class="card-pop group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-black bg-blue-100 text-blue-600 uppercase tracking-tighter">Physics</span>
+<span class="text-slate-400 text-[10px] font-medium uppercase tracking-widest">1 week ago</span>
+</div>
+<h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 leading-tight">Quantum Entanglement Explained with Coffee</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2">Imagine two cups of coffee that always share the same temperature, no matter the distance.</p>
+<div class="mt-4 flex items-center gap-3">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-white bg-slate-200" data-alt="User contributor avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZ38WeYZrdXBWrdidtp2Ek3QKdvKcDuFSqAbm0id_6F75ygcK4E8CmNlRvcpIt8Ph7eR7P4-mc68fd9cgxuEpLmWtoXTGwNV_FPyebIH3TpHy3BSMKValfXT8fx3vAAqwD5s5kX94riqyEzlIZPiaGK0UlTO707aA0Sxm9gkEJ6aXyNPyCr4wVeOi5NwREUG8uHUqCwsj-WeT4qH_40HtsVyyn32bU6-trdu0UDlKMKVJCA1p1SXCWjlyuGgygByb3tcZzY8UDVQo");'></div>
+<div class="size-6 rounded-full border-2 border-white bg-slate-200" data-alt="User contributor avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtgJJbjoZxpbNV2w0e6r_5B5ypp-D4jApPmpvZ5SQMr5zJxfNOAsyS_FmYW4Rw1n-3chFiLREehop8Ub-yJUxPQaHodN9KCwtIaVTQhQDyZDtYLPqAvSUxa7nz9tUd0OWB8-NCPM26trpOZbuoIuzs5sbOfA8CC07UxhpH9Vm3rm9W3wq7QDzDlYoRZYBSuTLHwWJzUcPKUr1v7eDcLFT6G31bzXgSHxF-zePpAi1gFHvh5Wu5HMTvvOH6XEamC1fWyC2_dbVXahk");'></div>
+</div>
+<span class="text-[10px] text-slate-400 font-bold">+12 Contributors</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty Library Illustration (Shown when no results) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center opacity-0">
+<div class="relative mb-8">
+<div class="size-48 bg-primary/10 rounded-full flex items-center justify-center">
+<svg class="size-32 text-primary" fill="currentColor" viewbox="0 0 24 24">
+<!-- Curious Mascot: Simple Round creature with large eyes -->
+<circle cx="12" cy="12" r="9"></circle>
+<circle cx="9" cy="11" fill="white" r="2"></circle>
+<circle cx="15" cy="11" fill="white" r="2"></circle>
+<circle cx="9.5" cy="11.5" fill="black" r="0.8"></circle>
+<circle cx="15.5" cy="11.5" fill="black" r="0.8"></circle>
+<path d="M10 16c1.1 0.7 2.9 0.7 4 0" fill="none" stroke="white" stroke-linecap="round" stroke-width="1"></path>
+</svg>
+</div>
+<div class="absolute -top-4 -right-4 bg-amber-400 text-white p-2 rounded-xl shadow-lg">
+<span class="material-symbols-outlined text-lg">question_mark</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">Your curiosity is a blank canvas</h2>
+<p class="text-slate-500 max-w-sm mx-auto mb-8">Start asking questions or explore the trending topics to begin your knowledge collection.</p>
+<button class="px-8 py-3 bg-primary text-white font-bold rounded-xl shadow-xl shadow-primary/30 hover:scale-105 transition-all">
+                    Ask Curiosity AI
+                </button>
+</div>
+</main>
+<!-- Floating Action Button for Mobile -->
+<div class="md:hidden fixed bottom-6 right-6">
+<button class="size-14 rounded-full bg-primary text-white shadow-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</div>
+</body></html>

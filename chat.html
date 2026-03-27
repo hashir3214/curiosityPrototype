@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Curiosity AI - Discovery Canvas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#0d0814",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.75rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between border-b border-primary/20 bg-white/70 dark:bg-background-dark/70 backdrop-blur-xl px-8 py-4 z-50 sticky top-0">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-xl bg-primary text-white">
+<span class="material-symbols-outlined text-2xl">auto_awesome</span>
+</div>
+<div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Curiosity AI</h2>
+<p class="text-xs text-primary font-medium">Quantum Biology Session</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary to-purple-600 text-white hover:opacity-90 transition-all font-bold text-sm shadow-lg shadow-primary/25">
+<span class="material-symbols-outlined text-lg">celebration</span>
+                    Surprise Me
+                </button>
+<div class="h-8 w-[1px] bg-primary/10"></div>
+<div class="flex gap-2">
+<button class="size-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="User profile avatar smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa5GI5z6zYUz2pRsAKkVEQFUKxXIA6LJX4tsLfZOXLj_5YJdKN4Q9Za3pHHJi2WBhObEdCwGiYXkTt4Ky0F0RQb-crhTPkyQ3j3sZt05QSmZjAOIjhPwCkVKBVt-7jxl6jheYtvincjKSOz_LhM_JuIeaA6vJwwejoTYp_FPsa-PstKRn6Hl-ArrcOu5dxofQFcDevZGVxzfRvabpSO_HHIZEpVTTyfE7IkdRk3BRPPNfUWh1cfSZMxXckiXrccVM1c6PNj5yyOM4"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Split Screen Layout -->
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Side: Chat Interface (40%) -->
+<section class="w-[450px] flex flex-col border-r border-primary/10 bg-white/40 dark:bg-background-dark/40 backdrop-blur-lg">
+<div class="flex-1 overflow-y-auto p-6 space-y-6"><!-- AI Message -->
+<div class="flex flex-col items-start gap-3 mb-8">
+<div class="flex items-center gap-2 ml-1">
+<div class="size-7 rounded-lg bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-[10px] text-white shadow-md">AI</div>
+<span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Curiosity AI</span>
+</div>
+<div class="max-w-[90%] rounded-2xl rounded-tl-none p-5 bg-white dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 shadow-sm border border-slate-200/50 dark:border-slate-700/50 leading-relaxed">
+                            Hello! I've been analyzing the connection between <span class="text-primary font-semibold underline decoration-primary/30">quantum entanglement</span> and how migratory birds navigate using Earth's magnetic fields.
+                        </div>
+<div class="max-w-[90%] rounded-2xl p-5 bg-white dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 shadow-sm border border-slate-200/50 dark:border-slate-700/50">
+                            The cryptochrome protein in their eyes seems to be the key. I've updated your <b class="text-primary">Discovery Canvas</b> with the latest structural renderings. Ready to dive into the molecular details?
+                        </div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end gap-3 mb-8">
+<div class="max-w-[90%] rounded-2xl rounded-tr-none p-5 bg-gradient-to-br from-primary to-purple-700 text-white shadow-xl shadow-primary/20 leading-relaxed font-medium">
+                            That's fascinating! Can you show me how the radical pair mechanism actually works within the retina?
+                        </div>
+<span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mr-2 flex items-center gap-1"><span class="material-symbols-outlined text-xs text-primary">done_all</span> Delivered</span>
+</div>
+<!-- AI Message with Interactive Bubble -->
+<div class="flex flex-col items-start gap-3">
+<div class="flex items-center gap-2 ml-1">
+<div class="size-7 rounded-lg bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-[10px] text-white shadow-md">AI</div>
+<span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Curiosity AI</span>
+</div>
+<div class="max-w-[90%] rounded-2xl rounded-tl-none p-6 bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-transparent border border-primary/20 text-slate-800 dark:text-slate-200">
+<p class="mb-4 leading-relaxed">Absolutely. I've generated a real-time simulation on the right. Look at the <b class="text-primary">blue highlights</b> in the protein structure.</p>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 text-xs font-bold border border-primary/20 text-primary shadow-sm hover:border-primary transition-colors">
+                                    Explain spin-states
+                                </button>
+<button class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 text-xs font-bold border border-primary/20 text-primary shadow-sm hover:border-primary transition-colors">
+                                    Zoom into Cryptochrome
+                                </button>
+</div>
+</div>
+</div></div>
+<!-- Chat Input Area -->
+<div class="p-4 border-t border-primary/10 bg-slate-50 dark:bg-slate-900/50">
+<div class="relative flex items-center">
+<input class="w-full bg-white dark:bg-slate-800 border-2 border-primary/10 focus:border-primary focus:ring-0 rounded-xl px-4 py-3 pr-24 text-sm transition-all shadow-inner" placeholder="Ask anything about the canvas..." type="text"/>
+<div class="absolute right-2 flex items-center gap-1">
+<button class="size-8 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="size-8 flex items-center justify-center bg-primary text-white rounded-lg shadow-md hover:shadow-primary/40 transition-all">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 px-1">
+<div class="flex gap-4">
+<button class="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 hover:text-primary transition-colors uppercase">
+<span class="material-symbols-outlined text-sm">attach_file</span> Attach
+                            </button>
+<button class="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 hover:text-primary transition-colors uppercase">
+<span class="material-symbols-outlined text-sm">image</span> Visuals
+                            </button>
+</div>
+<span class="text-[10px] text-slate-400">Powered by Curiosity 4.0</span>
+</div>
+</div>
+</section>
+<!-- Right Side: Discovery Canvas (60%) -->
+<section class="flex-1 bg-background-light/50 dark:bg-background-dark/50 backdrop-blur-sm p-8 overflow-y-auto">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">dashboard</span>
+<h3 class="text-xl font-bold">Discovery Canvas</h3>
+</div>
+<div class="flex bg-white dark:bg-slate-800 rounded-lg p-1 border border-primary/10 shadow-sm">
+<button class="px-3 py-1 rounded-md bg-primary text-white text-xs font-bold">Grid</button>
+<button class="px-3 py-1 rounded-md text-slate-500 text-xs font-bold">Timeline</button>
+<button class="px-3 py-1 rounded-md text-slate-500 text-xs font-bold">3D</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<!-- Main Feature Card -->
+<div class="col-span-2 relative group overflow-hidden rounded-2xl border border-primary/30 shadow-2xl bg-slate-950">
+<div class="h-[350px] w-full bg-slate-950 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80 z-10"></div>
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-alt="Intricate glowing quantum molecular structure diagram" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2SEOk7RgRTv5_yNwrXbjFr-HCWFnS7PP4hp6yJ7nb5qPKtID9Q9NmHpuqrw0UNuNmxz8W9o_dFu_TDAp_spMaMhx2KDdOkUFd_VELdr3bYXXZZIOHBrDDhZ4R325LGwmjVg4CDvKV2AHGNJ-oMmkMhHlRsNc6bEHQ_aMrEazbD7FBrYX1du4LJRclNfoIjnRRpP_Bgmfio5uqiQCJgi_4cSrrK2RRAaX5eOv8OrmThEBqIdhOODN35XxTTGTgRAUDIrfPOnxr0T8"/>
+<!-- Scientific UI Elements -->
+<div class="rounded-2xl border border-primary/10 bg-white/80 dark:bg-slate-800/80 p-5 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 backdrop-blur-sm"></div>
+<div class="absolute top-6 left-6 z-20">
+<div class="flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-primary/20">
+<div class="size-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-mono text-primary uppercase tracking-widest">Analysis Active</span>
+</div>
+</div>
+<div class="absolute top-6 right-6 z-20 flex flex-col gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-primary text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-primary/40">Live Simulation</span>
+<span class="px-3 py-1.5 rounded-lg bg-emerald-500/20 backdrop-blur-md text-emerald-400 text-[10px] font-bold border border-emerald-500/30 uppercase tracking-wider">Node Stable</span>
+</div>
+</div>
+<div class="p-8 bg-white dark:bg-slate-900">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-xl font-bold mb-2 tracking-tight">Cryptochrome 4 Radical Pair Mechanism</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-2xl">
+                                    Quantum-coherent electron transfer visualization. This model simulates blue light absorption triggering spin-correlated radical pairs within the protein scaffold.
+                                </p>
+</div>
+<button class="size-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+</div>
+<div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-6">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="size-7 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200"></div>
+<div class="size-7 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300"></div>
+<div class="size-7 rounded-full border-2 border-white dark:border-slate-900 bg-primary/80 text-[10px] flex items-center justify-center text-white font-bold">+12</div>
+</div>
+<span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Shared with Quantum Lab</span>
+</div>
+<div class="flex gap-2">
+<span class="text-[10px] font-mono text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">FPS: 60</span>
+<span class="text-[10px] font-mono text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">LAT: 12ms</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Card 1 -->
+<div class="rounded-2xl border border-primary/10 bg-white/80 dark:bg-slate-800/80 p-5 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 backdrop-blur-sm">
+<div class="aspect-video rounded-lg overflow-hidden mb-3 bg-slate-100 dark:bg-slate-900 relative">
+<img class="w-full h-full object-cover" data-alt="Map of bird migration paths across continents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ5Iw8juyRUsRVgS0rNQp2TpmwCbD4eOuzf900i-O0Mto14-5jFCLJxB2pxxCd2khfbit_gJiud8fvulJ96EMPoo9-itEgOpXtSPI4LxcOMWJ4nLU7I7N78prYDA112zXm99Cn1oR6gwWq4wLi4ZiPmAJH8NB858GI5wncE9rz7m3t20RwUHMFS17mtm4TJINveCRXEfTRsr6Bb8iixlqrnHpwCJrQIONRocMklpM0V9rBQPciYk6jK9yqpqg22wWPlAApIEL0d9o"/>
+<div class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/50 text-[10px] text-white backdrop-blur-sm">Migration Routes</div>
+</div>
+<h5 class="font-bold text-sm mb-1">Geographic Influence</h5>
+<p class="text-xs text-slate-500 leading-tight">Correlation between field intensity and species deviation.</p>
+</div>
+<!-- Side Card 2 -->
+<div class="rounded-2xl border border-primary/10 bg-white/80 dark:bg-slate-800/80 p-5 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 backdrop-blur-sm">
+<div class="aspect-video rounded-lg overflow-hidden mb-3 bg-slate-100 dark:bg-slate-900 relative">
+<img class="w-full h-full object-cover" data-alt="Microscopic cross section of an avian retina eye" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR3mu8X9Cmu-FEUaT8OxRlttZ2okha3AI3G9RK5CLwOpBJrVWGeYgYxW6gUfsO_ujk-NjbcG5wvuIIDBtEIVMgB0jb3BjNzGy0KbYBOAa0tPRiy-lgpLCA-LdzRMiMwZWgYio-YeL9CRJaMj8caVGG1xH43tBPXAtkV4K2bX-3w2DkXfmecOtRMqTd0iuy9mHRbV7adiLWbpmsgnqLpJyLqX5uLtDh8C5kjd0QuA2BhWb5As7dmuiDjB7gXxmMRH-nQXm37cwCMFc"/>
+<div class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/50 text-[10px] text-white backdrop-blur-sm">Retina Micrograph</div>
+</div>
+<h5 class="font-bold text-sm mb-1">Anatomical Context</h5>
+<p class="text-xs text-slate-500 leading-tight">Localization of cryptochromes in UV-sensitive cone cells.</p>
+</div>
+<!-- "Surprise Me" Style Discovery Card -->
+<div class="col-span-2 rounded-2xl bg-gradient-to-r from-primary via-purple-500 to-indigo-600 p-[1.5px] shadow-xl">
+<div class="bg-white dark:bg-slate-900 rounded-[calc(0.75rem-1px)] p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">psychology</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Curiosity Deep Dive</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Want to see the mathematical model for spin-dynamics?</p>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-xl transition-all shadow-md active:scale-95">
+                                Generate Model
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sidebar Navigation (Hidden/Minimized) -->
+<nav class="absolute left-0 top-1/2 -translate-y-1/2 bg-white dark:bg-background-dark border border-primary/10 p-2 rounded-r-2xl shadow-xl flex flex-col gap-4 z-40">
+<button class="size-10 flex items-center justify-center rounded-xl bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">explore</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">history</span>
+</button>
+<div class="h-[1px] w-full bg-primary/10"></div>
+<button class="size-10 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</nav>
+</div>
+</body></html>
