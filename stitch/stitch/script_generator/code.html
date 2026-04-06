@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cinematic Engine | AI Director Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#000000",
+                        "outline-variant": "#484847",
+                        "on-primary": "#650000",
+                        "tertiary-fixed": "#00e3fd",
+                        "on-primary-fixed-variant": "#600000",
+                        "surface-container-highest": "#262626",
+                        "on-tertiary-fixed-variant": "#005762",
+                        "surface-container-high": "#201f1f",
+                        "error-container": "#a70138",
+                        "error-dim": "#d73357",
+                        "surface-container": "#1a1919",
+                        "outline": "#767575",
+                        "surface-bright": "#2c2c2c",
+                        "on-secondary-fixed": "#661700",
+                        "surface-dim": "#0e0e0e",
+                        "inverse-surface": "#fcf9f8",
+                        "on-tertiary-container": "#004d57",
+                        "primary-fixed": "#ff7763",
+                        "secondary-fixed-dim": "#ffb19b",
+                        "secondary-fixed": "#ffc4b4",
+                        "surface-container-low": "#131313",
+                        "on-secondary": "#430c00",
+                        "primary-dim": "#eb0000",
+                        "secondary": "#ff734a",
+                        "on-surface": "#ffffff",
+                        "on-primary-container": "#4f0000",
+                        "primary-container": "#ff7763",
+                        "tertiary-dim": "#00d4ec",
+                        "primary": "#ff8e7d",
+                        "on-secondary-fixed-variant": "#982700",
+                        "inverse-on-surface": "#565555",
+                        "error": "#ff6e84",
+                        "secondary-dim": "#ff734a",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-fixed": "#003840",
+                        "inverse-primary": "#c10100",
+                        "surface-container-lowest": "#000000",
+                        "tertiary-container": "#00e3fd",
+                        "on-background": "#ffffff",
+                        "secondary-container": "#b02f00",
+                        "tertiary": "#81ecff",
+                        "surface-variant": "#262626",
+                        "on-secondary-container": "#fff6f4",
+                        "on-error-container": "#ffb2b9",
+                        "on-error": "#490013",
+                        "primary-fixed-dim": "#ff5b47",
+                        "on-surface-variant": "#adaaaa",
+                        "background": "#0e0e0e",
+                        "on-tertiary": "#005762",
+                        "tertiary-fixed-dim": "#00d4ec",
+                        "surface-tint": "#ff8e7d"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0e0e0e; color: #ffffff; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(38, 38, 38, 0.6); backdrop-filter: blur(20px); }
+        .ai-glow { box-shadow: 0 0 20px rgba(0, 227, 253, 0.15); }
+        .primary-gradient { background: linear-gradient(135deg, #ff8e7d 0%, #eb0000 100%); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- SideNavBar Component -->
+<aside class="flex flex-col h-full p-4 bg-zinc-950 h-screen w-64 border-r-0 shadow-[4px_0_24px_rgba(0,0,0,0.5)] z-50">
+<div class="mb-10 px-2">
+<span class="text-xl font-bold tracking-tighter text-red-600 uppercase font-headline">Cinematic Engine</span>
+<p class="text-[10px] text-zinc-500 tracking-[0.2em] uppercase mt-1">AI Director Mode</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label text-sm">Dashboard</span>
+</a>
+<!-- Active Tab: Script Gen -->
+<a class="flex items-center gap-3 px-4 py-3 text-red-500 font-bold bg-zinc-900/50 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label text-sm">Script Gen</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50" href="#">
+<span class="material-symbols-outlined" data-icon="seo">google_my_business</span>
+<span class="font-label text-sm">Metadata Optimizer</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label text-sm">History</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/5 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label text-sm">Settings</span>
+</a>
+<div class="flex items-center gap-3 px-4 py-3 mt-2">
+<img alt="User profile" class="w-8 h-8 rounded-full bg-surface-container-highest" data-alt="professional portrait of a creative director in a minimalist studio environment with soft rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKmnCPRDxBI0DapaYVI06ky2VwHVqu2xJMPkNBYmFf8i8GFYnVCTRzjLVDe_PDBfhfoZHTY84GrDgFED1fvpBfMtGJEqAJkaCgro8dO51X_Hw38S2ADdIXUZtQ3ZbUe6gr-XmLRixCwTZGs2qWQjhc94KjBe53uRTJf64ImDi5bpv6rtg4RePUulAAPfA-9rdhi2LlWq_yxrRpZrlz5sslBR3z-od8Kau6qRMhgBCBLjP3940n8JCPs2nS0GYA-M8WAxViLs87iwc"/>
+<div class="flex flex-col">
+<span class="text-xs font-medium">Alex Chen</span>
+<span class="text-[10px] text-zinc-500">Pro Plan</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="flex-1 flex flex-col relative overflow-hidden bg-surface">
+<!-- TopNavBar Component -->
+<header class="flex items-center justify-between px-8 h-16 fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-zinc-950/60 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center bg-surface-container-lowest px-4 py-1.5 rounded-lg w-96 border-b border-white/10 focus-within:ring-1 ring-cyan-400/50 transition-all">
+<span class="material-symbols-outlined text-zinc-500 text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none text-sm focus:ring-0 text-zinc-300 w-full placeholder:text-zinc-600" placeholder="Search projects..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-zinc-400 hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-600 rounded-full border border-black"></span>
+</button>
+<div class="h-6 w-px bg-white/10"></div>
+<button class="flex items-center gap-2 group">
+<span class="text-xs font-medium text-zinc-400 group-hover:text-white">User Profile</span>
+<img alt="User avatar" class="w-8 h-8 rounded-full border border-white/10" data-alt="minimalist user avatar icon with a sleek dark aesthetic and subtle red accent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNQChAuE6GqB9CNCst8-ts29z-qfyC2ioSiBgSTVB6zNzT79bYLJxbQ9E45zpRqDzoFodprpDt2khhtAnOJD3l7oWI8s2aQm8wfmpaxWpd9Jc1upzjTwbqZ_zHAg4Uqs6VYKTBaF4ZwIyTfk4M-W0iEoBwoiOZfF985wEIfxJ2Ds8vo8mkjmUY_b5V4J0FOilxD4vHyM3gavq6QMeteIiyiqyD4ZiSySS1wbFrqg0yAjPlU1dXNxpFrw_7AmluRaKZjYwJREkK8rM"/>
+</button>
+</div>
+</header>
+<!-- Workspace Content -->
+<div class="mt-16 flex-1 flex overflow-hidden">
+<!-- Left Column: Input Controls -->
+<div class="w-[420px] p-8 border-r border-white/5 flex flex-col gap-8 bg-surface-dim overflow-y-auto scrollbar-hide">
+<div class="space-y-2">
+<h1 class="text-3xl font-bold font-headline tracking-tight">Generate Script</h1>
+<p class="text-on-surface-variant text-sm">Direct your AI vision with precision controls.</p>
+</div>
+<!-- AI Prompt Input -->
+<div class="space-y-4">
+<label class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">The Core Concept</label>
+<div class="relative group">
+<textarea class="w-full h-48 bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-tertiary focus:ring-0 p-4 text-zinc-200 resize-none transition-all ai-glow placeholder:text-zinc-700" placeholder="Describe your video idea... e.g., 'A high-energy review of the new spatial computing headset focusing on design and daily utility'"></textarea>
+<div class="absolute bottom-4 right-4 flex items-center gap-2">
+<span class="text-[10px] text-tertiary font-mono animate-pulse">AI READY</span>
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_8px_#81ecff]"></div>
+</div>
+</div>
+</div>
+<!-- Controls Grid -->
+<div class="grid grid-cols-1 gap-6">
+<div class="space-y-3">
+<label class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold flex items-center justify-between">
+<span>Narrative Tone</span>
+<span class="text-tertiary">Cinematic</span>
+</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 text-xs rounded border border-tertiary/30 text-tertiary bg-tertiary/10">Cinematic</button>
+<button class="px-3 py-1.5 text-xs rounded border border-white/5 text-zinc-500 hover:border-white/20 hover:text-white transition-all">Educational</button>
+<button class="px-3 py-1.5 text-xs rounded border border-white/5 text-zinc-500 hover:border-white/20 hover:text-white transition-all">Hype</button>
+<button class="px-3 py-1.5 text-xs rounded border border-white/5 text-zinc-500 hover:border-white/20 hover:text-white transition-all">Minimalist</button>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Target Length</label>
+<div class="relative pt-2">
+<div class="h-1 w-full bg-outline-variant/20 rounded-full"></div>
+<div class="absolute top-2 left-0 h-1 w-2/3 bg-primary-dim rounded-full shadow-[0_0_8px_#eb0000]"></div>
+<div class="absolute top-0.5 left-2/3 -ml-2 w-4 h-4 bg-on-surface border-2 border-primary-dim rounded-full cursor-pointer"></div>
+<div class="flex justify-between mt-2 text-[10px] text-zinc-600 font-mono">
+<span>0:30 (Shorts)</span>
+<span class="text-primary-dim">10:00 (Standard)</span>
+<span>20:00+ (Doc)</span>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Specific Topic Focus</label>
+<input class="w-full bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-tertiary focus:ring-0 py-2 text-sm text-zinc-200 placeholder:text-zinc-700" placeholder="e.g. Ergonomics, Price Point" type="text"/>
+</div>
+</div>
+<!-- Generate Button -->
+<button class="w-full py-4 primary-gradient text-on-primary-fixed font-bold rounded-lg shadow-[0_4px_20px_rgba(235,0,0,0.3)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="movie_filter">movie_filter</span>
+                        RENDER SCRIPT
+                    </button>
+</div>
+<!-- Right Column: Editor / Canvas -->
+<div class="flex-1 bg-surface-container p-8 flex flex-col gap-6 relative">
+<!-- Editor Toolbar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="px-3 py-1 bg-zinc-900 border border-white/5 rounded-full text-[10px] text-zinc-400 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                AUTO-SAVED
+                            </span>
+<h2 class="font-headline text-lg font-medium">Vision Pro Deep Dive v1.0</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-zinc-400 hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="undo">undo</span>
+</button>
+<button class="p-2 text-zinc-400 hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="redo">redo</span>
+</button>
+<div class="h-4 w-px bg-white/10 mx-2"></div>
+<button class="px-4 py-1.5 bg-surface-variant hover:bg-zinc-700 rounded text-xs font-medium transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                                EXPORT
+                            </button>
+</div>
+</div>
+<!-- Editor Content (Script Preview) -->
+<div class="flex-1 glass-panel rounded-xl p-10 overflow-y-auto scrollbar-hide border border-white/5 relative group">
+<!-- AI Processing Glow (thinking state) -->
+<div class="absolute inset-0 bg-cyan-900/5 pointer-events-none border border-tertiary/10 animate-pulse"></div>
+<div class="max-w-3xl mx-auto space-y-12">
+<!-- Script Section -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-mono text-tertiary px-2 py-0.5 border border-tertiary/20 rounded">SCENE 01 - INT. STUDIO - DAY</span>
+<span class="h-px flex-1 bg-gradient-to-r from-tertiary/20 to-transparent"></span>
+</div>
+<div class="flex gap-6">
+<div class="w-32 shrink-0 text-[10px] uppercase tracking-tighter text-zinc-500 font-bold pt-1 text-right">VISUAL</div>
+<p class="flex-1 text-on-surface-variant leading-relaxed text-sm">Close-up tracking shot across the glass curves of the headset. Dramatic blue lighting reflects off the lens. Soft bokeh in background.</p>
+</div>
+<div class="flex gap-6">
+<div class="w-32 shrink-0 text-[10px] uppercase tracking-tighter text-zinc-500 font-bold pt-1 text-right">AUDIO</div>
+<p class="flex-1 text-zinc-200 font-medium leading-relaxed italic">"Most technology tries to get out of the way. This... this tries to redefine where the way even exists."</p>
+</div>
+</div>
+<!-- Script Section 02 -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-mono text-tertiary px-2 py-0.5 border border-tertiary/20 rounded">SCENE 02 - A-ROLL - DIRECT TO CAM</span>
+<span class="h-px flex-1 bg-gradient-to-r from-tertiary/20 to-transparent"></span>
+</div>
+<div class="flex gap-6">
+<div class="w-32 shrink-0 text-[10px] uppercase tracking-tighter text-zinc-500 font-bold pt-1 text-right">VISUAL</div>
+<p class="flex-1 text-on-surface-variant leading-relaxed text-sm">Host standing in center frame, clean white background. Eye contact is direct. Subtle zoom-in throughout the segment.</p>
+</div>
+<div class="flex gap-6">
+<div class="w-32 shrink-0 text-[10px] uppercase tracking-tighter text-zinc-500 font-bold pt-1 text-right">AUDIO</div>
+<p class="flex-1 text-zinc-200 font-medium leading-relaxed">"We've seen headsets before. But the Cinematic Engine inside this piece of hardware is something different. It doesn't just process pixels; it processes intent."</p>
+</div>
+</div>
+<!-- AI thinking placeholder -->
+<div class="space-y-4 opacity-50 animate-pulse">
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-mono text-tertiary px-2 py-0.5 border border-tertiary/20 rounded">SCENE 03 - RENDERING...</span>
+<div class="flex gap-1">
+<div class="w-1 h-1 bg-tertiary rounded-full animate-bounce"></div>
+<div class="w-1 h-1 bg-tertiary rounded-full animate-bounce [animation-delay:0.2s]"></div>
+<div class="w-1 h-1 bg-tertiary rounded-full animate-bounce [animation-delay:0.4s]"></div>
+</div>
+<span class="h-px flex-1 bg-gradient-to-r from-tertiary/20 to-transparent"></span>
+</div>
+<div class="flex gap-6">
+<div class="w-32 shrink-0 h-3 bg-zinc-800 rounded"></div>
+<div class="flex-1 space-y-2">
+<div class="h-3 w-full bg-zinc-800 rounded"></div>
+<div class="h-3 w-2/3 bg-zinc-800 rounded"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Scrubber Overlay -->
+<div class="absolute bottom-8 left-10 right-10 bg-zinc-950/80 backdrop-blur px-6 py-4 rounded-xl border border-white/10 flex items-center gap-6">
+<span class="text-[10px] font-mono text-zinc-500">03:42 / 10:00</span>
+<div class="flex-1 relative h-6 flex items-center">
+<div class="w-full h-1 bg-outline-variant/20 rounded-full"></div>
+<div class="absolute h-1 w-1/3 bg-primary-dim rounded-full"></div>
+<!-- Playhead -->
+<div class="absolute left-1/3 -ml-[1px] h-6 w-[2px] bg-primary-dim shadow-[0_0_12px_#eb0000]">
+<div class="absolute -top-1 -left-[3px] w-2 h-2 bg-primary-fixed rounded-full blur-[2px]"></div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-zinc-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow">play_arrow</span>
+</button>
+<button class="text-zinc-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="zoom_in">zoom_in</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Metadata Cards -->
+<div class="grid grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-4 rounded-lg border border-white/5 space-y-2 group hover:bg-surface-bright transition-all cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Est. Engagement</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="trending_up">trending_up</span>
+</div>
+<p class="text-2xl font-headline font-bold">88.4%</p>
+<div class="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[88%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-white/5 space-y-2 group hover:bg-surface-bright transition-all cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Shot Complexity</span>
+<span class="material-symbols-outlined text-primary-dim text-sm" data-icon="videocam">videocam</span>
+</div>
+<p class="text-2xl font-headline font-bold">Medium</p>
+<p class="text-[10px] text-zinc-500">12 Visual Transitions Suggested</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-white/5 space-y-2 group hover:bg-surface-bright transition-all cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Tone Consistency</span>
+<span class="material-symbols-outlined text-zinc-500 text-sm" data-icon="equalizer">equalizer</span>
+</div>
+<p class="text-2xl font-headline font-bold text-zinc-200">92%</p>
+<p class="text-[10px] text-zinc-500">Perfectly aligned with "Cinematic"</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating AI Sparkle (purely decorative) -->
+<div class="absolute bottom-6 right-6 z-50">
+<button class="w-12 h-12 rounded-full glass-panel border border-tertiary/20 flex items-center justify-center text-tertiary hover:scale-110 transition-all ai-glow">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

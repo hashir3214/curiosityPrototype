@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Metadata Optimizer | Cinematic Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#000000",
+                        "outline-variant": "#484847",
+                        "on-primary": "#650000",
+                        "tertiary-fixed": "#00e3fd",
+                        "on-primary-fixed-variant": "#600000",
+                        "surface-container-highest": "#262626",
+                        "on-tertiary-fixed-variant": "#005762",
+                        "surface-container-high": "#201f1f",
+                        "error-container": "#a70138",
+                        "error-dim": "#d73357",
+                        "surface-container": "#1a1919",
+                        "outline": "#767575",
+                        "surface-bright": "#2c2c2c",
+                        "on-secondary-fixed": "#661700",
+                        "surface-dim": "#0e0e0e",
+                        "inverse-surface": "#fcf9f8",
+                        "on-tertiary-container": "#004d57",
+                        "primary-fixed": "#ff7763",
+                        "secondary-fixed-dim": "#ffb19b",
+                        "secondary-fixed": "#ffc4b4",
+                        "surface-container-low": "#131313",
+                        "on-secondary": "#430c00",
+                        "primary-dim": "#eb0000",
+                        "secondary": "#ff734a",
+                        "on-surface": "#ffffff",
+                        "on-primary-container": "#4f0000",
+                        "primary-container": "#ff7763",
+                        "tertiary-dim": "#00d4ec",
+                        "primary": "#ff8e7d",
+                        "on-secondary-fixed-variant": "#982700",
+                        "inverse-on-surface": "#565555",
+                        "error": "#ff6e84",
+                        "secondary-dim": "#ff734a",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-fixed": "#003840",
+                        "inverse-primary": "#c10100",
+                        "surface-container-lowest": "#000000",
+                        "tertiary-container": "#00e3fd",
+                        "on-background": "#ffffff",
+                        "secondary-container": "#b02f00",
+                        "tertiary": "#81ecff",
+                        "surface-variant": "#262626",
+                        "on-secondary-container": "#fff6f4",
+                        "on-error-container": "#ffb2b9",
+                        "on-error": "#490013",
+                        "primary-fixed-dim": "#ff5b47",
+                        "on-surface-variant": "#adaaaa",
+                        "background": "#0e0e0e",
+                        "on-tertiary": "#005762",
+                        "tertiary-fixed-dim": "#00d4ec",
+                        "surface-tint": "#ff8e7d"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .glow-button {
+            background: linear-gradient(135deg, #ff8e7d 0%, #eb0000 100%);
+            box-shadow: 0 0 20px rgba(235, 0, 0, 0.3);
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(129, 236, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-dim selection:text-white">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-zinc-950 shadow-[4px_0_24px_rgba(0,0,0,0.5)] flex flex-col p-4 z-50">
+<div class="mb-10 px-2">
+<h1 class="text-xl font-bold tracking-tighter text-red-600 uppercase font-headline">Cinematic Engine</h1>
+<p class="text-[10px] tracking-[0.2em] text-zinc-500 uppercase mt-1">AI Director Mode</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="text-sm font-medium">Script Gen</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-red-500 font-bold bg-zinc-900/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">google_my_business</span>
+<span class="text-sm font-medium">Metadata Optimizer</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="text-sm font-medium">History</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/5">
+<a class="flex items-center gap-3 px-3 py-2.5 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="mt-4 flex items-center gap-3 px-3">
+<div class="w-8 h-8 rounded bg-zinc-800 flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcP91Ulso42AiZPfYYwUxEk3wMbm2prB64n0GXHWa2fPnPhlwkiQP9SosvwGAcl4noINwdf_rLeOVu9SDfNLboEQqIV6qOt9jQ-3c64PScpiSMMkc4MhCjiS84QwZjgKLq2OlRvVgBK-Evk6Y773FBkSCRnRYYtSmZk02tF-pVkzfMd8vg0EzYl25h3hdcI-etEhv-3H4D8usXfBvOTsbNrQbio0_W8M42nm0uAX5qu01Px3bL9BbtUWI6e7n4S75j2CTSU3--IJU"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-white">Studio Prime</span>
+<span class="text-[10px] text-zinc-500">Pro Member</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-zinc-950/60 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-8 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 text-lg group-focus-within:text-tertiary transition-colors">search</span>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant py-2 pl-10 pr-4 text-sm focus:ring-0 focus:border-tertiary transition-all placeholder:text-zinc-600" placeholder="Search saved optimizations..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-zinc-400 hover:text-white transition-all relative">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-600 rounded-full border-2 border-zinc-950"></span>
+</button>
+<div class="h-8 w-[1px] bg-white/10"></div>
+<button class="flex items-center gap-2 text-sm font-medium text-white hover:text-red-400 transition-colors">
+<span>Direct Mode</span>
+<span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 p-8 min-h-screen">
+<!-- Hero Section & Generator Input -->
+<section class="mb-12">
+<div class="max-w-4xl">
+<h2 class="font-headline text-4xl font-bold tracking-tight mb-2 text-white">Metadata <span class="text-primary-dim">Optimizer</span></h2>
+<p class="text-on-surface-variant text-lg mb-8 max-w-2xl">Fuel your algorithm growth with SEO-focused titles, high-retention descriptions, and tag architecture designed for the YouTube Cinematic era.</p>
+<div class="bg-surface-container p-1 rounded-xl ai-glow border border-white/5 transition-all focus-within:border-tertiary/30">
+<div class="flex gap-4 p-4">
+<div class="flex-1">
+<label class="text-[10px] uppercase tracking-widest text-tertiary font-bold mb-2 block">Script Context or Video Concept</label>
+<textarea class="w-full bg-transparent border-0 focus:ring-0 text-lg placeholder:text-zinc-700 resize-none font-medium" placeholder="Paste your script summary or video idea here... e.g. 'Reviewing the new Tesla Bot features in high speed'" rows="3"></textarea>
+</div>
+<div class="flex flex-col justify-end">
+<button class="glow-button text-on-primary-fixed font-bold px-8 py-4 rounded-lg flex items-center gap-2 transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                GENERATE SEO SUITE
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Workspace Grid -->
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- Left Column: Primary Metadata -->
+<div class="col-span-8 space-y-8">
+<!-- A/B Title Testing -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-2xl border border-white/5">
+<div class="p-4 bg-surface-container flex items-center justify-between border-b border-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-dim">splitscreen</span>
+<h3 class="font-headline font-bold uppercase tracking-wider text-sm">A/B Title Testing</h3>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary/10 text-tertiary uppercase tracking-tighter">AI Precision: 98%</span>
+</div>
+<div class="p-6 space-y-4">
+<!-- Candidate 1 -->
+<div class="group relative bg-surface-container-highest p-4 rounded-lg border-l-4 border-primary transition-all hover:scale-[1.01]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-primary uppercase">Variant A (High Click-Through)</span>
+<span class="text-xs text-on-surface-variant">Score: 92/100</span>
+</div>
+<p class="text-xl font-bold font-headline leading-tight pr-12">I Tested the Tesla Bot for 24 Hours: It’s Not What I Expected</p>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-600 hover:text-white transition-colors">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+</div>
+<!-- Candidate 2 -->
+<div class="group relative bg-surface-container p-4 rounded-lg border-l-4 border-zinc-700 transition-all hover:scale-[1.01]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-zinc-500 uppercase">Variant B (Search Intent)</span>
+<span class="text-xs text-on-surface-variant">Score: 87/100</span>
+</div>
+<p class="text-xl font-bold font-headline leading-tight pr-12 text-zinc-300">New Tesla Bot Full Features &amp; Performance Test (2024)</p>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-600 hover:text-white transition-colors">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Description Generator -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden border border-white/5">
+<div class="p-4 bg-surface-container flex items-center justify-between border-b border-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-dim">subject</span>
+<h3 class="font-headline font-bold uppercase tracking-wider text-sm">Description Optimized</h3>
+</div>
+<button class="text-[10px] font-bold text-on-surface-variant hover:text-white uppercase transition-colors">Refresh Draft</button>
+</div>
+<div class="p-6">
+<div class="bg-surface-container-lowest p-6 rounded-lg font-body text-sm leading-relaxed text-on-surface-variant border-b-2 border-outline-variant">
+<p class="mb-4 text-white font-medium">In today's video, we're diving deep into the future of robotics. 🤖</p>
+<p class="mb-4 italic">Timestamps:<br/>0:00 - The Unboxing Experience<br/>2:15 - Movement Capabilities<br/>5:30 - AI Integration Test<br/>12:00 - Final Verdict</p>
+<p class="mb-4">We put the new Tesla Bot through its paces in a series of rigorous real-world tests. Is this the future of household assistance or just another expensive tech toy? Watch until the end to see the robot’s surprising reaction to our hidden obstacle course.</p>
+<p class="text-primary-dim font-bold">#TeslaBot #Robotics #FutureTech #ElonMusk</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Visuals & Tags -->
+<div class="col-span-4 space-y-8">
+<!-- Thumbnail Ideas -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden border border-white/5">
+<div class="p-4 bg-surface-container flex items-center gap-3 border-b border-white/5">
+<span class="material-symbols-outlined text-primary-dim">image</span>
+<h3 class="font-headline font-bold uppercase tracking-wider text-sm">Thumbnail Visualizer</h3>
+</div>
+<div class="p-4 space-y-4">
+<div class="aspect-video bg-zinc-900 rounded-lg overflow-hidden group cursor-pointer relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="Futuristic robot arm reaching towards a human hand in high contrast dramatic red and black lighting cinematic style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ7J5HWX_Fv8-QK1Kq6jpDqPBVgqCqI4h2BOtLNMft0rGGpgRvSMsS704df-hrzyBpcgcI7zdRtFvTgYqnRaEMD2sJ4uz1fdnsnZpVHQcn6pCbDb2vZ-A3Wq2IzbJYSJsYu_jecE5_cWH61No4BkgqG_0qRoMwbZLI7iwq5yJrOkpAaJsgjiIlRATH7rmBtOi1X_bNrCdky2rWOrTpIXCekBcFOB6aHpMmxbjlOTaWZUJqJ1wVwh5iNUuCLG7WXDPsy4aiSAl_cvs"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute bottom-3 left-3 bg-red-600 text-on-primary-fixed px-2 py-1 text-[10px] font-bold uppercase">Idea #1: Tension</div>
+</div>
+<div class="aspect-video bg-zinc-900 rounded-lg overflow-hidden group cursor-pointer relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="Wide shot of a humanoid robot standing in a modern neon lit laboratory with shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKSPeT_pYAQ-TUzX-1WvdbscrxYSnXaomwGWP3a4TUop_YTYxbkonEO7BJ0577ipKJo2yfR_n7VWC_GP9N5sbHj9sNoBygNBLYkquOfSQG0sGfRmvwITcwdKHwkak9YnuB2Y2ZNuTMbqitFkiZyAOYsHh33rXpJ4ZucjGwqHuYfM_4WZV733BWNMBpnVhiIuut0clVdcA6Pu5MZViqB97amQq-B7XUkbfFfs6ywvOBdv52eZ1HL88eizFQ4GE0YV5NJYu1lIJuG78"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute bottom-3 left-3 bg-zinc-800 text-white px-2 py-1 text-[10px] font-bold uppercase">Idea #2: Scale</div>
+</div>
+<div class="p-3 bg-surface-container rounded-lg border border-white/5">
+<p class="text-[11px] text-tertiary font-bold uppercase mb-1">AI Recommendation:</p>
+<p class="text-xs text-on-surface-variant leading-tight italic">"Use extreme close-up of bot eye with a red glow to increase CTR by an estimated 14%."</p>
+</div>
+</div>
+</div>
+<!-- Smart Tags Bento -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden border border-white/5">
+<div class="p-4 bg-surface-container flex items-center justify-between border-b border-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-dim">sell</span>
+<h3 class="font-headline font-bold uppercase tracking-wider text-sm">Keyword Cloud</h3>
+</div>
+<span class="text-[10px] text-zinc-500">22/500 Chars</span>
+</div>
+<div class="p-4 flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-white text-[11px] font-bold rounded-full border border-white/5 hover:border-primary-dim transition-colors cursor-pointer">Tesla Bot 2024</span>
+<span class="px-3 py-1 bg-surface-container-highest text-white text-[11px] font-bold rounded-full border border-white/5 hover:border-primary-dim transition-colors cursor-pointer">Optimus Gen 2</span>
+<span class="px-3 py-1 bg-surface-container-highest text-white text-[11px] font-bold rounded-full border border-white/5 hover:border-primary-dim transition-colors cursor-pointer">AI Robotics</span>
+<span class="px-3 py-1 bg-surface-container-highest text-white text-[11px] font-bold rounded-full border border-white/5 hover:border-primary-dim transition-colors cursor-pointer">Tech Review</span>
+<span class="px-3 py-1 bg-surface-container-highest text-white text-[11px] font-bold rounded-full border border-white/5 hover:border-primary-dim transition-colors cursor-pointer">Elon Musk Bot</span>
+<span class="px-3 py-1 bg-surface-container-highest text-white text-[11px] font-bold rounded-full border border-white/5 hover:border-primary-dim transition-colors cursor-pointer">Robot Unboxing</span>
+<span class="px-3 py-1 bg-surface-container-highest text-white text-[11px] font-bold rounded-full border border-white/5 hover:border-primary-dim transition-colors cursor-pointer">Future AI</span>
+<button class="px-3 py-1 bg-tertiary/10 text-tertiary text-[11px] font-bold rounded-full flex items-center gap-1 hover:bg-tertiary hover:text-on-tertiary transition-all">
+<span class="material-symbols-outlined text-[12px]">add</span>
+                            SUGGEST MORE
+                        </button>
+</div>
+</div>
+<!-- Performance Forecast -->
+<div class="p-6 bg-gradient-to-br from-zinc-900 to-black rounded-xl border border-white/5 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-dim/20 rounded-full blur-3xl group-hover:bg-primary-dim/30 transition-all"></div>
+<h4 class="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em] mb-4">Traffic Forecast</h4>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-4xl font-headline font-bold text-white">12.5K</span>
+<span class="text-tertiary text-sm font-bold mb-1">+14% vs Avg</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Optimization level is currently in the 94th percentile for your niche category.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action for Saving -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="glow-button w-14 h-14 rounded-full flex items-center justify-center text-on-primary-fixed shadow-2xl transition-transform hover:scale-110 active:scale-90">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">save</span>
+</button>
+</div>
+</body></html>

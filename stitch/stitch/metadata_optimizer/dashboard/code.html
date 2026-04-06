@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cinematic Engine | Script AI Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#000000",
+                        "outline-variant": "#484847",
+                        "on-primary": "#650000",
+                        "tertiary-fixed": "#00e3fd",
+                        "on-primary-fixed-variant": "#600000",
+                        "surface-container-highest": "#262626",
+                        "on-tertiary-fixed-variant": "#005762",
+                        "surface-container-high": "#201f1f",
+                        "error-container": "#a70138",
+                        "error-dim": "#d73357",
+                        "surface-container": "#1a1919",
+                        "outline": "#767575",
+                        "surface-bright": "#2c2c2c",
+                        "on-secondary-fixed": "#661700",
+                        "surface-dim": "#0e0e0e",
+                        "inverse-surface": "#fcf9f8",
+                        "on-tertiary-container": "#004d57",
+                        "primary-fixed": "#ff7763",
+                        "secondary-fixed-dim": "#ffb19b",
+                        "secondary-fixed": "#ffc4b4",
+                        "surface-container-low": "#131313",
+                        "on-secondary": "#430c00",
+                        "primary-dim": "#eb0000",
+                        "secondary": "#ff734a",
+                        "on-surface": "#ffffff",
+                        "on-primary-container": "#4f0000",
+                        "primary-container": "#ff7763",
+                        "tertiary-dim": "#00d4ec",
+                        "primary": "#ff8e7d",
+                        "on-secondary-fixed-variant": "#982700",
+                        "inverse-on-surface": "#565555",
+                        "error": "#ff6e84",
+                        "secondary-dim": "#ff734a",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-fixed": "#003840",
+                        "inverse-primary": "#c10100",
+                        "surface-container-lowest": "#000000",
+                        "tertiary-container": "#00e3fd",
+                        "on-background": "#ffffff",
+                        "secondary-container": "#b02f00",
+                        "tertiary": "#81ecff",
+                        "surface-variant": "#262626",
+                        "on-secondary-container": "#fff6f4",
+                        "on-error-container": "#ffb2b9",
+                        "on-error": "#490013",
+                        "primary-fixed-dim": "#ff5b47",
+                        "on-surface-variant": "#adaaaa",
+                        "background": "#0e0e0e",
+                        "on-tertiary": "#005762",
+                        "tertiary-fixed-dim": "#00d4ec",
+                        "surface-tint": "#ff8e7d"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .glow-red {
+            box-shadow: 0 0 20px rgba(235, 0, 0, 0.2);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 15px rgba(129, 236, 255, 0.15);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #eb0000;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="flex flex-col h-full p-4 h-screen w-64 border-r-0 bg-zinc-950 shadow-[4px_0_24px_rgba(0,0,0,0.5)] z-50">
+<div class="mb-10 flex flex-col px-2">
+<span class="text-xl font-bold tracking-tighter text-red-600 uppercase">Cinematic Engine</span>
+<span class="text-[10px] tracking-widest text-zinc-500 font-medium uppercase mt-1">AI Director Mode</span>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-red-500 font-bold bg-zinc-900/50 rounded-lg transition-all scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined transition-transform group-hover:scale-110" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-sm">Script Gen</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined transition-transform group-hover:scale-110" data-icon="seo">google_my_business</span>
+<span class="text-sm">Metadata Optimizer</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined transition-transform group-hover:scale-110" data-icon="history">history</span>
+<span class="text-sm">History</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/5">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-zinc-800/50 rounded-lg mb-4" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a cinematic creator with soft red ambient studio lighting and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpmTkupmLSRAoyWr79zj8mCGx5TlAEQpEYXYk6zXYELIiNxpZq3FqFNRn3DuYAqvdQFu368CAgZ7EOrwH0L7m9ZovErV593WqlmwPQOwTy3OsPScQBN7PCI475QozrcPwMJK9oiXlGz4kZndNcIL2jccOITgsQUCnE5qyA1qKXmJCekDPopJnU99NRWWd_CS-LLCmC_-YBVu8oBdqtByG8k5RTFRUupnsCvk8nzVy7XbXPSzrPzZttDlK78_8P86UdIOCvpG36E9A"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Alex Rivera</span>
+<span class="text-[10px] text-zinc-500">Pro Director</span>
+</div>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar Component -->
+<header class="flex items-center justify-between px-8 h-16 fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-zinc-950/60 backdrop-blur-xl border-b border-white/5">
+<div class="flex items-center gap-6 w-1/2">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant py-2 pl-10 text-sm focus:ring-0 focus:border-tertiary transition-all placeholder:text-zinc-600" placeholder="Search projects or scripts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white transition-all rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-white/10 mx-2"></div>
+<button class="bg-gradient-to-br from-primary to-primary-dim px-4 py-2 rounded-md text-on-primary-fixed text-xs font-bold tracking-tight shadow-lg glow-red hover:scale-105 transition-transform uppercase">
+                    Upgrade to 8K
+                </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pt-24 px-8 pb-12 bg-surface text-on-surface-variant">
+<!-- Hero Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+<div class="md:col-span-2 p-6 rounded-xl bg-surface-container relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-dim/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<h3 class="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-4">Total Views Generated</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-headline font-bold text-on-surface">1.2M</span>
+<span class="text-tertiary text-xs flex items-center font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                                +14%
+                            </span>
+</div>
+<div class="mt-8 flex items-end gap-1 h-12">
+<div class="flex-1 bg-primary-dim/20 rounded-t-sm h-1/2"></div>
+<div class="flex-1 bg-primary-dim/20 rounded-t-sm h-3/4"></div>
+<div class="flex-1 bg-primary-dim/20 rounded-t-sm h-2/3"></div>
+<div class="flex-1 bg-primary-dim/40 rounded-t-sm h-full"></div>
+<div class="flex-1 bg-primary-dim/20 rounded-t-sm h-4/5"></div>
+<div class="flex-1 bg-primary-dim/60 rounded-t-sm h-full"></div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-surface-container flex flex-col justify-between">
+<div>
+<h3 class="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-1">Scripts Ready</h3>
+<span class="text-3xl font-headline font-bold text-on-surface">24</span>
+</div>
+<div class="mt-4 bg-tertiary/10 text-tertiary text-[10px] py-1 px-2 rounded-full w-fit font-bold glow-cyan uppercase">
+                        AI Processed
+                    </div>
+</div>
+<div class="p-6 rounded-xl bg-surface-container flex flex-col justify-between">
+<div>
+<h3 class="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-1">Avg Retention</h3>
+<span class="text-3xl font-headline font-bold text-on-surface">68%</span>
+</div>
+<div class="mt-4 text-zinc-400 text-[10px] font-medium">
+                        Above industry avg (52%)
+                    </div>
+</div>
+</section>
+<!-- Quick Start Shortcuts -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-headline font-bold text-on-surface tracking-tight">Direct Action</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<button class="group p-1 rounded-xl bg-gradient-to-br from-primary-dim/50 to-transparent hover:from-primary-dim transition-all">
+<div class="bg-surface-container-low h-full w-full rounded-[10px] p-6 flex items-center gap-4 text-left">
+<div class="w-12 h-12 rounded-lg bg-primary-dim/20 flex items-center justify-center text-primary-dim group-hover:bg-primary-dim group-hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">New Script</h4>
+<p class="text-xs text-zinc-500">Draft AI storyboard</p>
+</div>
+</div>
+</button>
+<button class="group p-1 rounded-xl bg-white/5 hover:bg-white/10 transition-all">
+<div class="bg-surface-container-low h-full w-full rounded-[10px] p-6 flex items-center gap-4 text-left">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="tag">tag</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Metadata</h4>
+<p class="text-xs text-zinc-500">Optimize for CTR</p>
+</div>
+</div>
+</button>
+<button class="group p-1 rounded-xl bg-white/5 hover:bg-white/10 transition-all">
+<div class="bg-surface-container-low h-full w-full rounded-[10px] p-6 flex items-center gap-4 text-left">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-zinc-400">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Deep Audit</h4>
+<p class="text-xs text-zinc-500">Channel health check</p>
+</div>
+</div>
+</button>
+</div>
+</section>
+<!-- Projects & Trending Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Recent Projects List -->
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-headline font-bold text-on-surface tracking-tight">Recent Projects</h2>
+<a class="text-xs text-secondary-fixed-dim hover:underline underline-offset-4" href="#">View All</a>
+</div>
+<div class="space-y-3">
+<!-- Project Card 1 -->
+<div class="group flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-bright transition-all cursor-pointer">
+<div class="w-24 h-16 rounded overflow-hidden bg-black flex-shrink-0">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="abstract flowing blue and purple digital energy shapes with cinematic lighting and soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDByVjkS2J5X10lWGEUx8KuAofizXDJbaF_1XFFOcdBZspXSRbNIvtrmRmgDQqWwiyDbd3QklegUPmFIVTUZFdwwIZml_8sQcSDA92M5KhB4mJq4zrgeY-ZOcHll1FLvOWXVUICHoljN5-mHNfitIJ7LX-RL6-uT3ys-5i82ogS9DyrhEX0h6mL0u0V7Aj0-VblHZBcoxlS4hWK_0xEEE_zX7td_oW8lvwxh0iplv2fudHh_baKdYGQileMonljMdOZ2aVRDcgUYzU"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-on-surface truncate">The Future of AI Hardware 2024</h4>
+<p class="text-[10px] text-zinc-500 mt-1">Edited 2h ago • 1,240 words</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] px-2 py-0.5 rounded border border-outline-variant text-zinc-400">Sci-Fi</span>
+<span class="material-symbols-outlined text-zinc-600 hover:text-white" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="group flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-bright transition-all cursor-pointer">
+<div class="w-24 h-16 rounded overflow-hidden bg-black flex-shrink-0">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="vintage computer hardware and retro technology arranged neatly with dramatic neon highlights and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUPoRxZc6QbnRt4UB3SUyXikHCCkyjAncVJbexni7JNzmCpN5bbmzMSpXPB264CcgzHkr-SfHsDMKsspT5RQquSgjSQWDO71FcvCcs5rmzkptzfKNrYcF82fnh974gw3S_UfDfvKxZPWFklNYWOdgt-lj-3KgRVjZsEgxTXyED_o-OR0flmkR33wgbnQ6ZE56v5RFnLuS38mxcXj6KRzVrZX5BTnGzxBLh6Qfr4dwR1CZdLJi_vVPDbC1-eg35MpCkPe4SqLsRg4M"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-on-surface truncate">Retro Gaming: A Lost Art?</h4>
+<p class="text-[10px] text-zinc-500 mt-1">Edited Yesterday • 850 words</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] px-2 py-0.5 rounded border border-outline-variant text-zinc-400">Documentary</span>
+<span class="material-symbols-outlined text-zinc-600 hover:text-white" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="group flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-bright transition-all cursor-pointer">
+<div class="w-24 h-16 rounded overflow-hidden bg-black flex-shrink-0">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="professional film camera on a gimbal in a dark studio setting with cinematic rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjTYObvIcbhyQuvP-gaZkUyY3bhwlLWB4FargNwSeblafTBa6HdpgYxe-POhbYES2qcBSghD6M9GBf2UX8OwZEmu01Y23zJfjIbC2XJcxGW48lMV-2v2eRv9SNhqt-Vc2Zg6UAL9tVZfHzXmoFG16vaF59VYksIjOvmTjY-rRVlWs6bNjlKsSTyMfrq6wrhJCmTcMUF9XMlA18htmyJ_qI09eMEH20ybkIqXHUpCKMZ92wHZ8o4xBzLE4cVtEJe4JJpNDRcPyQLKI"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-on-surface truncate">Cinematography Masterclass Pt. 1</h4>
+<p class="text-[10px] text-zinc-500 mt-1">Edited 3 days ago • 3,200 words</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] px-2 py-0.5 rounded border border-outline-variant text-zinc-400">Educational</span>
+<span class="material-symbols-outlined text-zinc-600 hover:text-white" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Trending Side Panel -->
+<aside class="glass-panel p-6 rounded-2xl border border-white/5 relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-24 h-24 bg-tertiary/10 blur-[60px]"></div>
+<h2 class="text-lg font-headline font-bold text-on-surface tracking-tight mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                        YouTube Trends
+                    </h2>
+<div class="space-y-6">
+<div>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-widest mb-2 block">Exploding Niche</span>
+<h5 class="text-sm font-bold text-on-surface mb-1">AI Video Essays</h5>
+<p class="text-xs text-zinc-500 leading-relaxed">Channels using synthetic voice-overs are seeing a 40% uptick in viewer retention this week.</p>
+<div class="mt-3 h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-3/4"></div>
+</div>
+</div>
+<div>
+<span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2 block">Hot Keywords</span>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] text-on-surface">#SpatialComputing</span>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] text-on-surface">#NoCodeAI</span>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] text-on-surface">#QuietLuxury</span>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] text-on-surface">#Biohacking</span>
+</div>
+</div>
+<div class="pt-6 border-t border-white/5">
+<button class="w-full py-3 bg-surface-container-highest text-tertiary text-xs font-bold rounded-lg hover:bg-surface-bright transition-colors flex items-center justify-center gap-2">
+                                Generate Trend Report
+                                <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<!-- Floating AI Prompt (Conditional) -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-dim shadow-2xl glow-red flex items-center justify-center hover:scale-110 active:scale-95 transition-all group">
+<span class="material-symbols-outlined text-on-primary-fixed text-2xl group-hover:rotate-12 transition-transform" data-icon="auto_videocam" style="font-variation-settings: 'FILL' 1;">auto_videocam</span>
+</button>
+</div>
+</body></html>
